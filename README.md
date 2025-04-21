@@ -177,7 +177,10 @@ Load your saved base configuration (`base_flux_settings.json`) and adjust these 
 *   `Learning rate:` `0.0001`
 *   `Text Encoder learning rate:` `0.0001`
 *   `Unet learning rate (Optional):` `0.0001`
-    *   `0.0001` is a recommended **STARTING POINT** for Adafactor/AdamW8bit with LoRA. `0.00005` might be too slow. `0.00035` or higher increases risk of instability/poor results. Requires testing and potential adjustment based on results.
+    *   `0.0001` is a recommended **STARTING POINT** for Adafactor/AdamW8bit with LoRA.
+    *   Requires testing checkpoints from different epochs.
+    *   If the model learns too slowly (loss decreases minimally), consider cautiously increasing (e.g., 0.00015, 0.0002).
+    *   `0.00005` might be too slow. `0.00035` or higher increases risk of instability/poor results. Requires testing and potential adjustment based on results.
 *   `Network Rank (Dimension):` `64`
 *   `Network Alpha:` `64`
     *   Rank 64 is a good balance for quality/speed/VRAM on 12GB. Lower rank (e.g., 32) is faster but might capture less detail. Higher (e.g., 128) requires more VRAM/time. Alpha is often set equal to Rank.
@@ -259,6 +262,7 @@ Before deciding whether to proceed with another training iteration, it's importa
     *   **`[Parameters] [Basic]`**
         *   `Epoch:` `25` (**Set the NEW TOTAL target epoch**, not the additional number of epochs)
         *   `Network weights:` `\path\to\your\output\models\ohwxohwx_e15.safetensors` (**Path to the LoRA file saved from the previous run**)
+        *   `DIM from weights:` `checked` (This helps guarantee Kohya uses the correct rank from the loaded LoRA file).
     *   **`[Parameters] [Advanced] [Weights tab]`**
         *   `Resume from saved training state:` `\path\to\your\output\models\ohwxohwx_e15-state` (**Path to the state folder saved from the previous run**)
     > Both `Network weights` and `Resume from saved training state` are needed when resuming: Network weights primarily tells Kohya the structure (rank/alpha etc.) of the LoRA file being continued, while Resume from saved training state loads the actual optimizer state, step count, and precise weight values to continue learning seamlessly. (Kohya might infer structure from state sometimes, but explicitly setting both is safest).
@@ -285,6 +289,7 @@ Before deciding whether to proceed with another training iteration, it's importa
     *   **`[Parameters] [Basic]`**
         *   `Epoch:` `30` (**Set the NEW TOTAL target epoch**, not the additional number of epochs)
         *   `Network weights:` `\path\to\your\output\models\ohwxohwx_e25.safetensors` (**Path to the LoRA file saved from the 2nd run**)
+        *   `DIM from weights:` `checked` (This helps guarantee Kohya uses the correct rank from the loaded LoRA file).
     *   **`[Parameters] [Advanced] [Weights tab]`**
         *   `Resume from saved training state:` `\path\to\your\output\models\ohwxohwx_e25-state` (**Path to the state folder saved from the 2nd run**)
     > Both `Network weights` and `Resume from saved training state` are needed when resuming: Network weights primarily tells Kohya the structure (rank/alpha etc.) of the LoRA file being continued, while Resume from saved training state loads the actual optimizer state, step count, and precise weight values to continue learning seamlessly. (Kohya might infer structure from state sometimes, but explicitly setting both is safest).
