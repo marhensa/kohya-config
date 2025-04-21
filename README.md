@@ -13,7 +13,7 @@ Ensure you have downloaded the necessary FLUX model components:
 
 ## Prerequisites (Software)
 
-*   **Git:** You need Git installed to clone the repository. ([https://git-scm.com/](https://git-scm.com))
+*   **Git:** You need Git installed to clone the repository. ([https://git-scm.com](https://git-scm.com))
 *   **NVIDIA CUDA Toolkit:** Having the latest CUDA Toolkit installed (e.g., [version 12.4](https://developer.nvidia.com/cuda-12-4-0-download-archive?target_os=Windows&target_arch=x86_64) or higher), exclude the drivers during installation if you already have a more recent driver.
 
 ---
