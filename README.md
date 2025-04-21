@@ -1,4 +1,4 @@
-# Windows Kohya_ss FLUX LoRA Training Guide (12GB VRAM Focus)
+# Windows Kohya_ss FLUX LoRA Training Complete Guide (12GB VRAM Focus)
 
 This guide provides a recommended setup and workflow for training FLUX LoRA models using Kohya_ss, optimized for GPUs with approximately 12GB VRAM (like an RTX 3060 12GB).
 
@@ -13,8 +13,8 @@ Ensure you have downloaded the necessary FLUX model components:
 
 ## Prerequisites (Software)
 
-*   **Git:** You need Git installed to clone the repository. ([https://git-scm.com/](https://git-scm.com/))
-*   **NVIDIA CUDA Toolkit:** Having the latest CUDA Toolkit installed (e.g., version 12.4 or higher), exclude the drivers during installation if you already have a more recent driver.
+*   **Git:** You need Git installed to clone the repository. ([https://git-scm.com/](https://git-scm.com))
+*   **NVIDIA CUDA Toolkit:** Having the latest CUDA Toolkit installed (e.g., [version 12.4](https://developer.nvidia.com/cuda-12-4-0-download-archive?target_os=Windows&target_arch=x86_64) or higher), exclude the drivers during installation if you already have a more recent driver.
 
 ---
 
@@ -70,8 +70,11 @@ These steps use `uv`, why you ask? Because you can install multiple lots of Pyth
     *   Copy **all `.dll` files** from the source directory to the destination directory. You can use File Explorer or the command line (`copy .\venv\Lib\site-packages\nvidia\cudnn\bin\*.dll .\venv\Lib\site-packages\torch\lib\`).
     *   *This step might not be strictly necessary for everyone, but it's a common fix if you encounter cuDNN-related errors later.*
 
-7.  **Run Kohya Setup Script:**
+7.  **Run Kohya Setup Script (Command Prompt, not PowerShell):**
     *   Ensure the virtual environment (`venv`) is still active.
+        ```bash
+        venv\Scripts\activate
+        ```
     *   **Run this specific command in Command Prompt (`cmd.exe`)**, as `setup.bat` might rely on batch file specifics:
         ```bash
         setup.bat
@@ -105,7 +108,7 @@ These steps use `uv`, why you ask? Because you can install multiple lots of Pyth
     ```bash
     gui
     ```
-    *   This should open the Kohya_ss interface in your web browser.
+    *   This should open the Kohya_ss interface in your web browser. If not, open the browser and use this URL [http://127.0.0.1:7860](http://127.0.0.1:7860)
 
 ---
 
