@@ -41,6 +41,7 @@ These steps use `uv`, why you ask? Because you can install multiple lots of Pyth
 3.  **Create and Activate Virtual Environment:**
     *   Still inside the `kohya_ss` directory, create the environment using Python 3.10 (Python 3.10 is recommended from kohya_ss gui repo):
         ```bash
+        uv python install 3.10
         uv venv venv --python 3.10 --seed
         ```
     *   Activate the environment:
